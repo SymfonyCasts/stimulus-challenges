@@ -1,0 +1,23 @@
+webpack_encore_entry_tags:
+  question: |
+    What's the difference between these two Twig's functions
+    `encore_entry_link_tags('app')` and `encore_entry_script_tags('app')`?
+  explanation: |
+    The function `encore_entry_link_tags('app')` will render the built version of the
+    `app.css` file, and `encore_entry_script_tags('app')` will render the build version
+    of the `app.js` file. And the `app` entry is defined in the `webpack.config.js` file.
+  features:
+    multiple_choice:
+      choices:
+        a: |
+          None, both functions do the same thing
+        b: |
+          `encore_entry_link_tags('app')` is for rendering styles tags
+          and `encore_entry_script_tags('app')` is for rendering script tags
+        c: |
+          `encore_entry_link_tags('app')` is for rendering script tags
+          and `encore_entry_script_tags('app')` is for rendering styles tags
+        d: |
+          `encore_entry_link_tags('app')` is for rendering `noscript` tags
+          and `encore_entry_script_tags('app')` is for rendering script tags
+      correct: b
