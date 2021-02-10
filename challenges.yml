@@ -21,3 +21,21 @@ webpack_encore_entry_tags:
           `encore_entry_link_tags('app')` is for rendering `noscript` tags
           and `encore_entry_script_tags('app')` is for rendering script tags
       correct: b
+css_import_module:
+  question: |
+    Why Ryan prefixed the package name with `~` when importing
+    a CSS module?
+  explanation: |
+    ...
+  features:
+    multiple_choice:
+      choices:
+        a: |
+          Ryan was just been fancy.
+        b: |
+          It makes the path relative.
+        c: |
+          It makes the path absolute.
+        d: |
+          It's required when importing a module from the `node_modules` directory.
+      correct: D
