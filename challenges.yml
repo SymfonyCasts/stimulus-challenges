@@ -47,15 +47,16 @@ stimulus_controllers_convention:
     Stimulus have some basic naming conventions for filenames and identifiers. For filenames use the snake_case
     or kebab-case, e.g. `controllers/date_picker_controller.js`, `controllers/list-item-controller.js`
     And for identifiers always use the kebab-case (`list-item`).
+    * The snake_case takes precedence if there are two files with the same name but using each of the naming conventions.
   features:
     multiple_choice:
       choices:
         a: |
           It will connect to the `api_manager_controller.js` file
         b: |
-          It will connect to the `api_manager.js` file
+          It will connect to the `api-manager-controller.js` file
         c: |
-          It will connect to the `api_manager.js` file
+          It will connect to the `api-manager_controller.js` file
         d: |
-          It will connect to the `api-manager.js` file
+          It will connect to the `api_manager.js` file
       correct: a
