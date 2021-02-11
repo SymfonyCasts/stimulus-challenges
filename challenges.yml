@@ -50,16 +50,12 @@ stimulus_controllers_convention:
   features:
     multiple_choice:
       choices:
-        a:
-          |
+        a: |
           It will connect to the `api_manager_controller.js` file
-        b:
-          |
+        b: |
           It will connect to the `api_manager.js` file
-        c:
-          |
+        c: |
           It will connect to the `api_manager.js` file
-        d:
-          |
+        d: |
           It will connect to the `api-manager.js` file
       correct: a
