@@ -40,3 +40,26 @@ css_import_module:
         d: |
           It's required when importing a package from the `node_modules` directory.
       correct: d
+stimulus_controllers_convention:
+  question: |
+    Which Stimulus controller does this element will connect to `<div data-controller="api-manager"></div>`?
+  explanation: |
+    Stimulus have some basic naming conventions for filenames and identifiers. For filenames use the snake_case
+    or kebab-case, e.g. `controllers/date_picker_controller.js`, `controllers/list-item-controller.js`
+    And for identifiers always use the kebab-case (`list-item`).
+  features:
+    multiple_choice:
+      choices:
+        a:
+          |
+          It will connect to the `api_manager_controller.js` file
+        b:
+          |
+          It will connect to the `api_manager.js` file
+        c:
+          |
+          It will connect to the `api_manager.js` file
+        d:
+          |
+          It will connect to the `api-manager.js` file
+      correct: a
