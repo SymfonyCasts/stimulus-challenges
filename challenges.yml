@@ -23,40 +23,45 @@ webpack_encore_entry_tags:
       correct: b
 css_import_module:
   question: |
-    Why Ryan prefixed the package name with a `~` when importing
+    Why did Ryan prefix the package name with a `~` when importing
     a CSS module?
   explanation: |
-    Prefixing a package name with a `~` tells the compiler to look for it
-    inside the `node_modules` directory.
+    Prefixing an import string with `~` tells Webpack to look for it
+    inside the `node_modules/` directory.
   features:
     multiple_choice:
       choices:
         a: |
-          Ryan was just been fancy.
+          It's required when importing a package from your home directory.
         b: |
           It makes the path relative.
         c: |
           It makes the path absolute.
         d: |
-          It's required when importing a package from the `node_modules` directory.
+          It's required when importing a package from the `node_modules/` directory.
       correct: d
 stimulus_controllers_convention:
   question: |
-    Which Stimulus controller does this element will connect to `<div data-controller="api-manager"></div>`?
+    What is the filename of the Stimulus controller that this element will connect to?
+    
+    ```html
+    <div data-controller="api-manager"></div>
+    ```
   explanation: |
-    Stimulus has some basic naming conventions for filenames and identifiers. For filenames use the snake_case
-    or kebab-case, e.g. `controllers/date_picker_controller.js`, `controllers/list-item-controller.js`
-    And for identifiers always use the kebab-case (`list-item`).
-    * The snake_case takes precedence if there are two files with the same name but using each of the naming conventions.
+    The simplest way to think about it is this: Stimulus remove the `_controller.js` part
+    of your filename and the rest becomes the name of the controller.
+    
+    But in reality, Stimulus has a bit more flexibility, described here: https://stimulus.hotwire.dev/handbook/installing#controller-filenames-map-to-identifiers.
+    For example, you can end your controller names in `-controller.js` instead of `_controller.js`.
+    You can also use `_` in your names (e.g. `api_manager_controller.js`), though the name
+    of your controller will always use dashes (this controller will still be called `api-manager`).
   features:
     multiple_choice:
       choices:
         a: |
-          It will connect to the `api_manager_controller.js` file
-        b: |
           It will connect to the `api-manager-controller.js` file
-        c: |
+        b: |
           It will connect to the `api-manager_controller.js` file
-        d: |
+        c: |
           It will connect to the `api_manager.js` file
-      correct: a
+      correct: b
