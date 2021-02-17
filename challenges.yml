@@ -1,25 +1,27 @@
 webpack_encore_entry_tags:
   question: |
-    What's the difference between these two Twig's functions
-    `encore_entry_link_tags('app')` and `encore_entry_script_tags('app')`?
+    When you run Encore, it builds the final files into a `public/build/` directory. Why do we use:
+    ```html
+    {{ encore_entry_script_tags('app') }}
+    ```
+    instead of the simpler:
+    ```html
+    <script src="/build/app.js"></script>
+    ```
   explanation: |
-    The function `encore_entry_link_tags('app')` will render the built version of the
-    `app.css` file, and `encore_entry_script_tags('app')` will render the build version
-    of the `app.js` file. And the `app` entry is defined in the `webpack.config.js` file.
+    When Encore compiles your assets it's possible that the final `app.js` file will be split into
+    multiple files, and this function will take care of including all the required link tags.
   features:
     multiple_choice:
       choices:
         a: |
-          None, both functions do the same thing
+          We can use any option, it doesn't matter.
         b: |
-          `encore_entry_link_tags('app')` is for rendering styles tags
-          and `encore_entry_script_tags('app')` is for rendering script tags
+          This function will take care of including any other generated file.
         c: |
-          `encore_entry_link_tags('app')` is for rendering script tags
-          and `encore_entry_script_tags('app')` is for rendering styles tags
+          Encore does not allows you to access to the final `app.js` final directly.
         d: |
-          `encore_entry_link_tags('app')` is for rendering `noscript` tags
-          and `encore_entry_script_tags('app')` is for rendering script tags
+          This function compiles your assets right before creating the link tags.
       correct: b
 css_import_module:
   question: |
