@@ -22,7 +22,7 @@ webpack_encore_entry_tags:
         b: |
           This function will take care of including any other generated file.
         c: |
-          Encore does not allows you to access to the final `app.js` final directly.
+          Encore does not allows you to access to the final `app.js` file directly.
         d: |
           This function compiles your assets right before creating the link tags.
       correct: b
