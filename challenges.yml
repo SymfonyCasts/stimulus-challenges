@@ -72,17 +72,32 @@ stimulus_controllers_convention:
       correct: b
 stimulus_targets:
   question: |
-    What's the main purpose of Stimulus targets?
+    What would you have to change to this controller to be able to get an array
+    of all the matched targets instead of just one?
+    ```js
+    export default class extends Controller {
+        static targets = ['item'];
+
+        connect() {
+            this.itemTarget.forEach(() => {
+                // Do something with this target
+            });
+        }
+    }
+    ```
   explanation: |
-    A Stimulus target helps us at connecting DOM elements to Javascript. We don't have to rely on jQuery or vanilla Javascript
-    to find an element in a page
+    Stimulus has a convention for how to work with `targets`. First, you have to register the target name
+    inside the `static` property `targets`. Then, you can use any of the registered targets by their name post-fixing
+    `Target` to work with the first target found in the template, or `Targets` to get an array of matching targets.
   features:
     multiple_choice:
       choices:
         a: |
-          It's a quick way for automatically connecting a DOM element to Javascript.
+          Register the target like this: `static targets = ['items'];`
         b: |
-          It's the only way to work with DOM elements inside a Stimulus controller.
+          Change the `this.itemTarget` call to this `this.itemTargets`
         c: |
-          A Stimulus target is required in order to instantiate a controller.
-      correct: a
+          Change the `this.itemTarget` call to this `this.itemTargetsAll`
+        d: |
+          Change the `this.itemTarget` call to this `this.itemAll`
+      correct: b
