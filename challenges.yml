@@ -24,7 +24,7 @@ webpack_encore_entry_tags:
         c: |
           Encore does not allows you to access to the final `app.js` file directly.
         d: |
-          This function compiles your assets right before creating the link tags.
+          This function compiles your assets right before creating the script tags.
       correct: b
 css_import_module:
   question: |
