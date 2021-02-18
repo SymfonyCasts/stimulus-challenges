@@ -18,7 +18,7 @@ webpack_encore_entry_tags:
     multiple_choice:
       choices:
         a: |
-          We can use any option, it doesn't matter.
+          Both will work, some people just like the simpler `encore_entry_script_tags()`.
         b: |
           This function will take care of including any other generated file.
         c: |
