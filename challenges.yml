@@ -120,3 +120,25 @@ stimulus_actions:
         d: |
           It's a quick way to listen to all events.
       correct: c
+event_current_target:
+  question: |
+    What element will be attached to the `event.currentTarget` variable when clicking on the `<i>` tag.
+    ```html
+    <button data-action="user-controller#addUser">
+      <i class="fa fa-plus"></i>
+      <span>Add a new User</span>
+    </button>
+    ```
+  explanation: |
+    The `event.currentTarget` will always hold a reference to the element that we attached the event to. And at
+    the other hand, `event.target` references to the element which received or listened to the event, in this case, the click event.
+  features:
+    multiple_choice:
+      choices:
+        a: |
+          The `<button>` element
+        b: |
+          The `<i>` element
+        c: |
+          The `<span>` element
+      correct: a
