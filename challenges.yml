@@ -142,3 +142,21 @@ event_current_target:
         c: |
           The `<span>` element
       correct: a
+js_data_attributes:
+  question: |
+    How can I access to the `color-id` data attribute of an element using plain Javascript?
+  explanation: |
+    Javascript stores all of the data attributes inside the `dataset` property of an element but standardizing its key names.
+    For example the `data-api-url` attribute would be renamed to `someElement.dataset.apiUrl`
+  features:
+    multiple_choice:
+      choices:
+        a: |
+          `$(element).data('colorId');`
+        b: |
+          `$(element).data('color-id');`
+        c: |
+          `element.dataset.color-id`
+        d: |
+          `element.dataset.colorId`
+      correct: d
