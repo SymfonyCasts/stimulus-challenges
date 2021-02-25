@@ -160,3 +160,28 @@ js_data_attributes:
         d: |
           `element.dataset.colorId`
       correct: d
+stimulus_values:
+  question: |
+    If I have this Stimulus value on a controller. How can I get access to it?
+    ```js
+    export default class extends Controller {
+      static values = {
+          colorSelected: Boolean
+      }
+    }
+    ```
+  explanation: |
+    Stimulus has a naming convention for the `values` API. For every `value` that you define, Stimilus
+    will create an object with the same name but post-fixing the word `Value` (capital V).
+  features:
+    multiple_choice:
+      choices:
+        a: |
+          `this.getValue('colorSelected')`;
+        b: |
+          `this.colorSelected`;
+        c: |
+          `this.colorSelectedValue`;
+        d: |
+          `this.values.colorSelected`;
+      correct: c
