@@ -103,7 +103,7 @@ stimulus_targets:
       correct: b
 stimulus_actions:
   question: |
-    What happens if I don't specify the event to listen when defining a Stimulus action?
+    What happens if I don't specify the event to listen to when defining a Stimulus action?
     `<button data-action="counter#increment" />`
   explanation: |
     If you don't explicitly define which event you want to listen, then, Stimulus will set a default event
