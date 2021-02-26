@@ -88,7 +88,7 @@ stimulus_targets:
   explanation: |
     Stimulus has a convention for how to work with `targets`. First, you have to register the target name
     inside the `static` property `targets`. Then, you can use any of the registered targets by their name post-fixing
-    `Target` to work with the first target found in the template, or `Targets` to get an array of matching targets.
+    `Target` (to get with the first target found) or `Targets` (to get an array of all the matching targets).
   features:
     multiple_choice:
       choices:
