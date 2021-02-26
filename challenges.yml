@@ -122,7 +122,7 @@ stimulus_actions:
       correct: c
 event_current_target:
   question: |
-    What element will be attached to the `event.currentTarget` variable when clicking on the `<i>` tag.
+    What element will be attached to the `event.currentTarget` variable if the user clicks on the `<i>` icon tag.
     ```html
     <button data-action="user-controller#addUser">
       <i class="fa fa-plus"></i>
