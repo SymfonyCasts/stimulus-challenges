@@ -116,7 +116,7 @@ stimulus_actions:
         b: |
           Nothing will happen because there aren't any events to listen to.
         c: |
-          Based on the element's type a default event will be attached instead.
+          A "default" event will be used based on the element's type.
         d: |
           It's a quick way to listen to all events.
       correct: c
