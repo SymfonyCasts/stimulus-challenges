@@ -106,7 +106,7 @@ stimulus_actions:
     What happens if I don't specify the event to listen to when defining a Stimulus action?
     `<button data-action="counter#increment" />`
   explanation: |
-    If you don't explicitly define which event you want to listen, then, Stimulus will set a default event
+    If you don't explicitly define which event you want to listen to, then, Stimulus will use a default event
     based on the element's type. For example a `<button>` element would be attached to the `click` event.
   features:
     multiple_choice:
