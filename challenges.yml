@@ -9,7 +9,7 @@ webpack_encore_entry_tags:
     <script src="/build/app.js"></script>
     ```
   explanation: |
-    When Encore compiles your assets it's possible that the final `app.js` file will be split into
+    When Encore compiles your assets, it's possible that the final `app.js` file will be split into
     multiple files. This function takes care of including all the required script tags. As a bonus,
     this also allows you to use "versioning" in Encore, where your final filenames contain hashes
     that are unique to the content inside - like `app.1234abcd.js`. The Twig function handles
