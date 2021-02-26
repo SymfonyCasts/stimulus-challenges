@@ -131,7 +131,7 @@ event_current_target:
     ```
   explanation: |
     The `event.currentTarget` will always hold a reference to the element that we attached the event to. And at
-    the other hand, `event.target` references to the element which received or listened to the event, in this case, the click event.
+    the other hand, `event.target` will always reference the element that *received*  the event. In this case, that would be the `<i>` element.
   features:
     multiple_choice:
       choices:
