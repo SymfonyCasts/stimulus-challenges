@@ -114,7 +114,7 @@ stimulus_actions:
         a: |
           Stimulus will throw an error.
         b: |
-          Nothing will happen because there aren't any event to listen.
+          Nothing will happen because there aren't any events to listen to.
         c: |
           Based on the element's type a default event will be attached instead.
         d: |
