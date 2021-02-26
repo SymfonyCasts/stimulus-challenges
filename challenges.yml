@@ -162,7 +162,7 @@ js_data_attributes:
       correct: d
 stimulus_values:
   question: |
-    If I have this Stimulus value on a controller. How can I get access to it?
+    Suppose we have this Stimulus value on a controller: 
     ```js
     export default class extends Controller {
       static values = {
