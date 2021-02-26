@@ -144,7 +144,7 @@ event_current_target:
       correct: a
 js_data_attributes:
   question: |
-    How can I access to the `color-id` data attribute of an element using plain Javascript?
+    How can I access the `color-id` data attribute of an element using plain JavaScript?
   explanation: |
     Javascript stores all of the data attributes inside the `dataset` property of an element but standardizing its key names.
     For example the `data-api-url` attribute would be renamed to `someElement.dataset.apiUrl`
