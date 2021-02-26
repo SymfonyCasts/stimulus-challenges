@@ -172,7 +172,7 @@ stimulus_values:
     ```
   explanation: |
     Stimulus has a naming convention for the `values` API. For every `value` that you define, Stimulus
-    will create an object with the same name but post-fixing the word `Value` (capital V).
+    will create an object with the same name but with the word `Value` (capital V) after it.
   features:
     multiple_choice:
       choices:
