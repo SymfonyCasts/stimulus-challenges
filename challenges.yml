@@ -20,7 +20,7 @@ webpack_encore_entry_tags:
         a: |
           Both will work, some people just like the simpler `encore_entry_script_tags()`.
         b: |
-          This function will take care of including any other generated file.
+          This function will take care of including any other generated files.
         c: |
           Encore does not allows you to access to the final `app.js` file directly.
         d: |
