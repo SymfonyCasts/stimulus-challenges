@@ -118,7 +118,7 @@ stimulus_actions:
         c: |
           A "default" event will be used based on the element's type.
         d: |
-          It's a quick way to listen to all events.
+          It will work: this is a quick way to listen to all events.
       correct: c
 event_current_target:
   question: |
