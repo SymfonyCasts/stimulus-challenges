@@ -79,7 +79,7 @@ stimulus_targets:
         static targets = ['item'];
 
         connect() {
-            this.itemTarget.forEach(() => {
+            this.itemTarget.forEach((itemElement) => {
                 // Do something with this target
             });
         }
