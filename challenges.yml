@@ -1,6 +1,7 @@
 webpack_encore_entry_tags:
   question: |
     When you run Encore, it builds the final files into a `public/build/` directory. Why do we use:
+
     ```html
     {{ encore_entry_script_tags('app') }}
     ```
@@ -48,14 +49,14 @@ css_import_module:
 stimulus_controllers_convention:
   question: |
     What is the filename of the Stimulus controller that this element will connect to?
-    
+
     ```html
     <div data-controller="api-manager"></div>
     ```
   explanation: |
     The simplest way to think about it is this: Stimulus remove the `_controller.js` part
     of your filename and the rest becomes the name of the controller.
-    
+
     But in reality, Stimulus has a bit more flexibility, described here: https://stimulus.hotwire.dev/handbook/installing#controller-filenames-map-to-identifiers.
     For example, you can end your controller names in `-controller.js` instead of `_controller.js`.
     You can also use `_` in your names (e.g. `api_manager_controller.js`), though the name
@@ -74,6 +75,7 @@ stimulus_targets:
   question: |
     What would you have to change to this controller to be able to get an array
     of all the matched targets instead of just one?
+
     ```js
     export default class extends Controller {
         static targets = ['item'];
@@ -104,7 +106,11 @@ stimulus_targets:
 stimulus_actions:
   question: |
     What happens if I don't specify the event to listen to when defining a Stimulus action?
-    `<button data-action="counter#increment" />`
+    ```html
+    <button
+        data-action="counter#increment"
+    />
+    ```
   explanation: |
     If you don't explicitly define which event you want to listen to, then, Stimulus will use a default event
     based on the element's type. For example a `<button>` element would be attached to the `click` event.
@@ -123,6 +129,7 @@ stimulus_actions:
 event_current_target:
   question: |
     What element will be attached to the `event.currentTarget` variable if the user clicks on the `<i>` icon tag.
+
     ```html
     <button data-action="user-controller#addUser">
       <i class="fa fa-plus"></i>
@@ -162,7 +169,8 @@ js_data_attributes:
       correct: d
 stimulus_values:
   question: |
-    Suppose we have this Stimulus value on a controller: 
+    Suppose we have this Stimulus value on a controller:
+
     ```js
     export default class extends Controller {
       static values = {
