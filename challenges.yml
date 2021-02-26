@@ -1,25 +1,31 @@
 webpack_encore_entry_tags:
   question: |
-    What's the difference between these two Twig's functions
-    `encore_entry_link_tags('app')` and `encore_entry_script_tags('app')`?
+    When you run Encore, it builds the final files into a `public/build/` directory. Why do we use:
+
+    ```html
+    {{ encore_entry_script_tags('app') }}
+    ```
+    instead of the simpler:
+    ```html
+    <script src="/build/app.js"></script>
+    ```
   explanation: |
-    The function `encore_entry_link_tags('app')` will render the built version of the
-    `app.css` file, and `encore_entry_script_tags('app')` will render the build version
-    of the `app.js` file. And the `app` entry is defined in the `webpack.config.js` file.
+    When Encore compiles your assets, it's possible that the final `app.js` file will be split into
+    multiple files. This function takes care of including all the required script tags. As a bonus,
+    this also allows you to use "versioning" in Encore, where your final filenames contain hashes
+    that are unique to the content inside - like `app.1234abcd.js`. The Twig function handles
+    rendering the correct, versioned filenames as well!
   features:
     multiple_choice:
       choices:
         a: |
-          None, both functions do the same thing
+          Both will work, some people just like the simpler `encore_entry_script_tags()`.
         b: |
-          `encore_entry_link_tags('app')` is for rendering styles tags
-          and `encore_entry_script_tags('app')` is for rendering script tags
+          This function will take care of including any other generated files.
         c: |
-          `encore_entry_link_tags('app')` is for rendering script tags
-          and `encore_entry_script_tags('app')` is for rendering styles tags
+          Encore does not allows you to access the final `app.js` file directly.
         d: |
-          `encore_entry_link_tags('app')` is for rendering `noscript` tags
-          and `encore_entry_script_tags('app')` is for rendering script tags
+          This function compiles your assets right before creating the script tags.
       correct: b
 css_import_module:
   question: |
@@ -43,14 +49,14 @@ css_import_module:
 stimulus_controllers_convention:
   question: |
     What is the filename of the Stimulus controller that this element will connect to?
-    
+
     ```html
     <div data-controller="api-manager"></div>
     ```
   explanation: |
     The simplest way to think about it is this: Stimulus remove the `_controller.js` part
     of your filename and the rest becomes the name of the controller.
-    
+
     But in reality, Stimulus has a bit more flexibility, described here: https://stimulus.hotwire.dev/handbook/installing#controller-filenames-map-to-identifiers.
     For example, you can end your controller names in `-controller.js` instead of `_controller.js`.
     You can also use `_` in your names (e.g. `api_manager_controller.js`), though the name
@@ -65,3 +71,125 @@ stimulus_controllers_convention:
         c: |
           It will connect to the `api_manager.js` file
       correct: b
+stimulus_targets:
+  question: |
+    What would you have to change to this controller to be able to get an array
+    of all the matched targets instead of just one?
+
+    ```js
+    export default class extends Controller {
+        static targets = ['item'];
+
+        connect() {
+            this.itemTarget.forEach((itemElement) => {
+                // Do something with this target
+            });
+        }
+    }
+    ```
+  explanation: |
+    Stimulus has a convention for how to work with `targets`. First, you have to register the target name
+    inside the `static` property `targets`. Then, you can access any of the registered targets by their name plus the word
+    `Target` (to get with the first target found) or `Targets` (to get an array of all the matching targets).
+  features:
+    multiple_choice:
+      choices:
+        a: |
+          Register the target like this: `static targets = ['items'];`
+        b: |
+          Change the `this.itemTarget` call to this `this.itemTargets`
+        c: |
+          Change the `this.itemTarget` call to this `this.itemTargetsAll`
+        d: |
+          Change the `this.itemTarget` call to this `this.itemAll`
+      correct: b
+stimulus_actions:
+  question: |
+    What happens if I don't specify the event to listen to when defining a Stimulus action?
+    ```html
+    <button
+        data-action="counter#increment"
+    />
+    ```
+  explanation: |
+    If you don't explicitly define which event you want to listen to, then, Stimulus will use a default event
+    based on the element's type. For example a `<button>` element would be attached to the `click` event.
+  features:
+    multiple_choice:
+      choices:
+        a: |
+          Stimulus will throw an error.
+        b: |
+          Nothing will happen because there aren't any events to listen to.
+        c: |
+          A "default" event will be used based on the element's type.
+        d: |
+          It will work: this is a quick way to listen to all events.
+      correct: c
+event_current_target:
+  question: |
+    What element will be attached to the `event.currentTarget` variable if the user clicks on the `<i>` icon tag.
+
+    ```html
+    <button data-action="user-controller#addUser">
+      <i class="fa fa-plus"></i>
+      <span>Add a new User</span>
+    </button>
+    ```
+  explanation: |
+    The `event.currentTarget` will always hold a reference to the element that we attached the event to. On
+    the other hand, `event.target` will always reference the element that *received*  the event. In this case, that would be the `<i>` element.
+  features:
+    multiple_choice:
+      choices:
+        a: |
+          The `<button>` element
+        b: |
+          The `<i>` element
+        c: |
+          The `<span>` element
+      correct: a
+js_data_attributes:
+  question: |
+    How can I access the `color-id` data attribute of an element using plain JavaScript?
+  explanation: |
+    JavaScript stores all of the data attributes inside the `dataset` property of an element, but it standardizes the key names.
+    For example the `data-api-url` attribute would be accessible via `someElement.dataset.apiUrl`
+  features:
+    multiple_choice:
+      choices:
+        a: |
+          `$(element).data('colorId');`
+        b: |
+          `$(element).data('color-id');`
+        c: |
+          `element.dataset.color-id`
+        d: |
+          `element.dataset.colorId`
+      correct: d
+stimulus_values:
+  question: |
+    Suppose we have this Stimulus value on a controller:
+
+    ```js
+    export default class extends Controller {
+      static values = {
+          colorSelected: Boolean
+      }
+    }
+    ```
+  explanation: |
+    Stimulus has a naming convention for the `values` API. For every `value` that you define, Stimulus
+    will create an object with the same name but with the word `Value` (capital V) after it.
+  features:
+    multiple_choice:
+      choices:
+        a: |
+          `this.getValue('colorSelected')`;
+        b: |
+          `this.colorSelected`;
+        c: |
+          `this.colorSelectedValue`;
+        d: |
+          `this.values.colorSelected`;
+      correct: c
