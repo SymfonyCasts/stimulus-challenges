@@ -147,7 +147,7 @@ js_data_attributes:
     How can I access the `color-id` data attribute of an element using plain JavaScript?
   explanation: |
     JavaScript stores all of the data attributes inside the `dataset` property of an element, but it standardizes the key names.
-    For example the `data-api-url` attribute would be renamed to `someElement.dataset.apiUrl`
+    For example the `data-api-url` attribute would be accessible via `someElement.dataset.apiUrl`
   features:
     multiple_choice:
       choices:
