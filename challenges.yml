@@ -193,3 +193,51 @@ stimulus_values:
         d: |
           `this.values.colorSelected`;
       correct: c
+value_change_callback:
+  question: |
+    Supose we have a Stimulus controller like this one:
+
+    ```js
+    export default class extends Controller {
+        static targets = ['selectItem']
+
+        static values = {
+            itemId: Number
+        }
+
+        connect() {
+            console.log("Hey I'm connected!");
+        }
+    }
+    ```
+    How would you add a *change callback* method to the `itemId` value?
+  explanation: |
+
+  features:
+    multiple_choice:
+      choices:
+        a: |
+          ```js
+          itemIdChanged() {
+              ...
+          }
+          ```
+        b: |
+          ```js
+          itemIdValueChanged() {
+              ...
+          }
+          ```
+        c: |
+          ```js
+          onChangeItemIdValue() {
+              ...
+          }
+          ```
+        d: |
+          ```js
+          itemIdValue() {
+              ...
+          }
+          ```
+      correct: b
