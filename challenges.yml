@@ -242,3 +242,31 @@ value_change_callback:
           }
           ```
       correct: b
+search_preview:
+  question: |
+    From a Twig template how can you pass data to a Stimulus controller using the Values API?
+  explanation: |
+    The second argument of Encore's built-in function, the `stimulus_controller` function, help us on that,
+    you only have to pass an object where the key name matches to one of the defined `values` in a controller.
+  features:
+    multiple_choice:
+      choices:
+        a: |
+          ```twig
+          {{ stimulus_controller('search-preview', {
+              id: object.id
+          }) }}
+          ```
+        b: |
+          ```twig
+          {{ controller_stimulus('search-preview', {
+              id: object.id
+          }) }}
+          ```
+        c: |
+          ```twig
+          {{ stimulus_controller_value('search-preview', {
+              id: object.id
+          }) }}
+          ```
+      correct: a
