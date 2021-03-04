@@ -270,3 +270,42 @@ search_preview:
           }) }}
           ```
       correct: a
+stimulus_use:
+  question: |
+    Suppose you have this Stimulus controller which enables the `click outside` functionality . What is it missing?
+
+    ```js
+    import { Controller } from 'stimulus';
+    import { useClickOutside  } from 'stimulus-use';
+
+    export default class extends Controller {
+        static values = {
+            url: String,
+        }
+
+        clickOutside(event) {
+            // some interesting code here...
+        }
+    }
+    ```
+  explanation: |
+    In order to tell Stimulus you want to enable the `useClickOutside` feature, besides importing the module you need to
+    initialize it in the `connect()` method, e.g.
+
+    ```js
+    connect() {
+        useClickOutside(this);
+    }
+    ```
+  features:
+    multiple_choice:
+      choices:
+        a: |
+          The `clickOutside()` method should be prefixed with `async`
+        b: |
+          The `useClickOutside` feature must be initialized in the `connect()` method
+        c: |
+          The controller is missing a target.
+        d: |
+          Nothing.
+      correct: b
