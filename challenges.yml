@@ -178,6 +178,8 @@ stimulus_values:
       }
     }
     ```
+
+    How can we access the `colorSelected` value?
   explanation: |
     Stimulus has a naming convention for the `values` API. For every `value` that you define, Stimulus
     will create an object with the same name but with the word `Value` (capital V) after it.
