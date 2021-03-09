@@ -309,3 +309,22 @@ stimulus_use:
         d: |
           Nothing.
       correct: b
+multi_controller_dispatch:
+  question: |
+    How can I pass the `id` of an item from one to another Stimulus controllers?
+  explanation: |
+    The `stimilus-use` library comes with the `useDispatch` behavior wich helps at dispatching and listening to events.
+    Dispatching an event is as easy as this `this.dispatch('event:name');` and, if you specify its second argument, then
+    it will be passed to its listeners.
+  features:
+    multiple_choice:
+      choices:
+        a: |
+          You cannot communicate between controllers.
+        b: |
+          By dispatching an event `this.dispatch('event:name', null, item.id);`
+        c: |
+          By dispatching an event `this.dispatch('event:name', item.id);`
+        d: |
+          By defining a global variable.
+      correct: c
