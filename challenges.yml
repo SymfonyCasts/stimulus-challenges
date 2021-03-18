@@ -328,3 +328,54 @@ multi_controller_dispatch:
         d: |
           By defining a global variable.
       correct: c
+react_props:
+  question: |
+    Select the right option for rendering a React component with data coming from a template in a Stimulus controller
+  explanation: |
+    You can use the `Values` API of Stimulus to receive data from a template and then pass it
+    through a React component as a property field.
+  features:
+    multiple_choice:
+      choices:
+        a: |
+          ```js
+          export default class extends Controller {
+              static targets = [
+                  'name'
+              ]
+
+              connect() {
+                  ReactDOM.render(
+                      <Product name={this.nameTarget} />,
+                      this.element
+                  )
+              }
+          }
+          ```
+        b: |
+          ```js
+          export default class extends Controller {
+              connect(productName) {
+                  ReactDOM.render(
+                      <Product name={productName} />,
+                      this.element
+                  )
+              }
+          }
+          ```
+        c: |
+          ```js
+          export default class extends Controller {
+              static values = {
+                  name: String
+              }
+
+              connect() {
+                  ReactDOM.render(
+                      <Product name={this.nameValue} />,
+                      this.element
+                  )
+              }
+          }
+          ```
+      correct: c
