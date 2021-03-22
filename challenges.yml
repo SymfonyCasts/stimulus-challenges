@@ -324,7 +324,7 @@ multi_controller_dispatch:
         b: |
           By dispatching an event as `this.dispatch('event:name', null, item.id);`
         c: |
-          By dispatching an event `this.dispatch('event:name', item.id);`
+          By dispatching an event as `this.dispatch('event:name', item.id);`
         d: |
           By defining a global variable.
       correct: c
