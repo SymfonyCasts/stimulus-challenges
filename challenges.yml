@@ -212,7 +212,7 @@ value_change_callback:
     ```
     How would you add a *change callback* method to the `itemId` value?
   explanation: |
-    The "Value Change Callback" feature of the values API of Stimulus implements a naming convention. The method's name
+    The "Value Change Callback" feature of the Stimulus values API implements a naming convention. The method's name
     must be equal to the name of the *value* property plus the word `ValueChanged`.
   features:
     multiple_choice:
