@@ -311,7 +311,7 @@ stimulus_use:
       correct: b
 multi_controller_dispatch:
   question: |
-    How can I pass the `id` of an item from one to another Stimulus controllers?
+    How can I pass the `id` of an item from one to another Stimulus controller?
   explanation: |
     The `stimilus-use` library comes with the `useDispatch` behavior wich helps at dispatching and listening to events.
     Dispatching an event is as easy as this `this.dispatch('event:name');` and, if you specify its second argument, then
