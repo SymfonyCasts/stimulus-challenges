@@ -195,7 +195,7 @@ stimulus_values:
       correct: c
 value_change_callback:
   question: |
-    Supose we have a Stimulus controller like this one:
+    Suppose we have a Stimulus controller like this:
 
     ```js
     export default class extends Controller {
