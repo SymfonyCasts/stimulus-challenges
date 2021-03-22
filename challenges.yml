@@ -379,3 +379,59 @@ react_props:
           }
           ```
       correct: c
+async_imports:
+  question: |
+    What's the right option for importing dynamically the `ReactDOM` module in a Stimulus controller?
+  explanation: |
+    Webpack allows you to do dynamic imports by following the next syntax:
+
+    ```js
+    import('react-dom').then((ReactDOM) => {
+        // ReactDOM.default.render(...);
+    }
+    ```
+
+    And, the `.default` part is required when importing the "default" module from a file.
+  features:
+    multiple_choice:
+      choices:
+        a: |
+          ```js
+          export default class extends Controller {
+              connect() {
+                  import('react-dom').then((ReactDOM) => {
+                      ReactDOM.render(
+                          <FeatureProduct product={this.productValue} />,
+                          this.element
+                      )
+                  })
+              }
+          }
+          ```
+        b: |
+          ```js
+          export default class extends Controller {
+              connect() {
+                  import('react-dom').then((ReactDOM) => {
+                      ReactDOM.default.render(
+                          <FeatureProduct product={this.productValue} />,
+                          this.element
+                      )
+                  })
+              }
+          }
+          ```
+        c: |
+          ```js
+          export default class extends Controller {
+              onInput() {
+                  import('react-dom').then((ReactDOM) => {
+                      ReactDOM.default.render(
+                          <FeatureProduct product={this.productValue} />,
+                          this.element
+                      )
+                  })
+              }
+          }
+          ```
+      correct: b
