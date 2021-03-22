@@ -322,7 +322,7 @@ multi_controller_dispatch:
         a: |
           You cannot communicate between controllers.
         b: |
-          By dispatching an event `this.dispatch('event:name', null, item.id);`
+          By dispatching an event as `this.dispatch('event:name', null, item.id);`
         c: |
           By dispatching an event `this.dispatch('event:name', item.id);`
         d: |
