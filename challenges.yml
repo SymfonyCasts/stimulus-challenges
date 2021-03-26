@@ -339,7 +339,8 @@ react_props:
     the Stimulus controller look like to allow this?
     controller 
   explanation: |
-    You can use the `Values` API of Stimulus to receive data from a template and then pass it
+    The Values API is *perfect* for receiving data from a template and then pass it to the controller...
+    which we can easily pass along to a React component as a prop. Yay!
     through a React component as a property field.
   features:
     multiple_choice:
