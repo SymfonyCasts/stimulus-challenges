@@ -322,7 +322,8 @@ multi_controller_dispatch:
     multiple_choice:
       choices:
         a: |
-          You cannot communicate between controllers.
+          You cannot communicate between controllers, but this is by design. One
+          controller should not have *any* awareness of any other controller.
         b: |
           By dispatching an event as `this.dispatch('event:name', null, item.id);`
         c: |
