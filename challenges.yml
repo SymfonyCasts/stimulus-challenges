@@ -315,7 +315,8 @@ multi_controller_dispatch:
     How can I pass some data - e.g. an `id` of an item - from one Stimulus controller to another?
   explanation: |
     The `stimulus-use` library comes with a `useDispatch` behavior which helps with dispatching.
-    Dispatching an event is as easy as `this.dispatch('event:name');` and, if you specify its second argument, then
+    Dispatching an event is as easy as `this.dispatch('event:name')`. If you specify a second argument, that data
+    will be passed to any listeners on the `event.detail` property.
     it will be passed to its listeners.
   features:
     multiple_choice:
