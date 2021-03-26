@@ -204,10 +204,6 @@ value_change_callback:
         static values = {
             itemId: Number
         }
-
-        connect() {
-            console.log("Hey I'm connected!");
-        }
     }
     ```
     How would you add a *change callback* method for the `itemId` value?
@@ -244,29 +240,38 @@ value_change_callback:
       correct: b
 search_preview:
   question: |
-    How can you pass data to a Stimulus controller from a Twig template using the Values API?
+    How can you pass the `itemId` value to this Stimulus controller from a Twig template using the Values API?
+
+    ```js
+    export default class extends Controller {
+        static values = {
+            itemId: Number
+        }
+    }
+    ```
   explanation: |
     The second argument of Encore's `stimulus_controller()` function helps us with this!
     All we need to do is pass an object where each key name matches one of the defined `values` in the controller.
+    The key name is normalized automatically by the function, e.g. `item-id` is transformed to `itemId`.
   features:
     multiple_choice:
       choices:
         a: |
           ```twig
           {{ stimulus_controller('search-preview', {
-              id: object.id
+              itemId: object.id
           }) }}
           ```
         b: |
           ```twig
           {{ controller_stimulus('search-preview', {
-              id: object.id
+              itemId: object.id
           }) }}
           ```
         c: |
           ```twig
           {{ stimulus_controller_value('search-preview', {
-              id: object.id
+              itemId: object.id
           }) }}
           ```
       correct: a
@@ -317,7 +322,8 @@ multi_controller_dispatch:
     The `stimulus-use` library comes with a `useDispatch` behavior which helps with dispatching.
     Dispatching an event is as easy as `this.dispatch('event:name')`. If you specify a second argument, that data
     will be passed to any listeners on the `event.detail` property.
-    it will be passed to its listeners.
+    And while it is true that each controller should be "independent" of others. You can also get access to
+    one controller instance from inside another... but I prefer to dispatch events whenever possible!
   features:
     multiple_choice:
       choices:
@@ -325,9 +331,9 @@ multi_controller_dispatch:
           You cannot communicate between controllers, but this is by design. One
           controller should not have *any* awareness of any other controller.
         b: |
-          By dispatching an event as `this.dispatch('event:name', null, item.id);`
+          By dispatching an event as `this.dispatch('event:name', null, { id: item.id });`
         c: |
-          By dispatching an event as `this.dispatch('event:name', item.id);`
+          By dispatching an event as `this.dispatch('event:name', { id: item.id });`
         d: |
           By defining a global variable in `connect()` - e.g. `window.id = 5` - and referencing that in the
           other controller.
@@ -398,12 +404,10 @@ async_imports:
     Webpack allows you to do dynamic imports by following the next syntax:
 
     ```js
-    import('react-dom').then((ReactDOM) => {
-        // ReactDOM.default.render(...);
-    }
+    const { default: ReactDOM } = await import('react-dom');
     ```
 
-    The `.default` part is weird, but required when importing the "default" module from a file.
+    The `default` part is weird, but required when importing the "default" module from a file.
   features:
     multiple_choice:
       choices:
@@ -416,7 +420,7 @@ async_imports:
                           <FeatureProduct product={this.productValue} />,
                           this.element
                       )
-                  })
+                  });
               }
           }
           ```
@@ -424,12 +428,11 @@ async_imports:
           ```js
           export default class extends Controller {
               connect() {
-                  import('react-dom').then((ReactDOM) => {
-                      ReactDOM.default.render(
-                          <FeatureProduct product={this.productValue} />,
-                          this.element
-                      )
-                  })
+                  const { default: ReactDOM } = await import('react-dom').
+                  ReactDOM.render(
+                      <FeatureProduct product={this.productValue} />,
+                      this.element
+                  );
               }
           }
           ```
@@ -437,12 +440,11 @@ async_imports:
           ```js
           export default class extends Controller {
               onInput() {
-                  import('react-dom').then((ReactDOM) => {
-                      ReactDOM.default.render(
-                          <FeatureProduct product={this.productValue} />,
-                          this.element
-                      )
-                  })
+                  const { default: ReactDOM } = await import('react-dom').
+                  ReactDOM.render(
+                      <FeatureProduct product={this.productValue} />,
+                      this.element
+                  );
               }
           }
           ```
