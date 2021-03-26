@@ -329,7 +329,8 @@ multi_controller_dispatch:
         c: |
           By dispatching an event as `this.dispatch('event:name', item.id);`
         d: |
-          By defining a global variable.
+          By defining a global variable in `connect()` - e.g. `window.id = 5` - and referencing that in the
+          other controller.
       correct: c
 react_props:
   question: |
