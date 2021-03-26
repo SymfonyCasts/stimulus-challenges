@@ -272,7 +272,8 @@ search_preview:
       correct: a
 stimulus_use:
   question: |
-    Suppose you have this Stimulus controller which enables the "click outside" functionality. What is it missing?
+    Suppose you have the following Stimulus controller, which enables the "click outside" functionality.
+    What is it missing?
 
     ```js
     import { Controller } from 'stimulus';
