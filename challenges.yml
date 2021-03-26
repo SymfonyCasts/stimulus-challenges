@@ -308,7 +308,7 @@ stimulus_use:
         c: |
           The controller is missing a target that defines *which* element is being clicked outside of.
         d: |
-          Nothing.
+          Nothing! It's perfect! Pure "click outside" poetry!
       correct: b
 multi_controller_dispatch:
   question: |
