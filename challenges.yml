@@ -389,7 +389,11 @@ react_props:
       correct: c
 async_imports:
   question: |
-    What's the right option for importing dynamically the `ReactDOM` module in a Stimulus controller?
+    We noticed that `react-dom` is being included in the JavaScript for every page... even though
+    we only use it to render one component on a single page. What's the correct way to import
+    that module dynamically?
+    
+    Oh... and to be extra cool... we want to use `await`.
   explanation: |
     Webpack allows you to do dynamic imports by following the next syntax:
 
