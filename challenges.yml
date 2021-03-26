@@ -334,7 +334,10 @@ multi_controller_dispatch:
       correct: c
 react_props:
   question: |
-    Select the right option for rendering a React component with data coming from a template in a Stimulus controller
+    We just built a cool React component! Let's render it with Stimulus! Oh, but there's a catch: we need
+    to be able to pass the current user's `name` directly from our server into React as a prop. What should
+    the Stimulus controller look like to allow this?
+    controller 
   explanation: |
     You can use the `Values` API of Stimulus to receive data from a template and then pass it
     through a React component as a property field.
