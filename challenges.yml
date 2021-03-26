@@ -195,3 +195,259 @@ stimulus_values:
         d: |
           `this.values.colorSelected`;
       correct: c
+value_change_callback:
+  question: |
+    Suppose we have a Stimulus controller like this:
+
+    ```js
+    export default class extends Controller {
+        static targets = ['selectItem'];
+
+        static values = {
+            itemId: Number
+        }
+    }
+    ```
+    How would you add a *change callback* method for the `itemId` value?
+  explanation: |
+    The "Value Change Callback" feature of the Stimulus values API implements a naming convention. The method's name
+    must be equal to the name of the *value* property plus the word `ValueChanged`.
+  features:
+    multiple_choice:
+      choices:
+        a: |
+          ```js
+          itemIdChanged() {
+              ...
+          }
+          ```
+        b: |
+          ```js
+          itemIdValueChanged() {
+              ...
+          }
+          ```
+        c: |
+          ```js
+          onChangeItemIdValue() {
+              ...
+          }
+          ```
+        d: |
+          ```js
+          itemIdValue() {
+              ...
+          }
+          ```
+      correct: b
+search_preview:
+  question: |
+    How can you pass the `itemId` value to this Stimulus controller from a Twig template using the Values API?
+
+    ```js
+    export default class extends Controller {
+        static values = {
+            itemId: Number
+        }
+    }
+    ```
+  explanation: |
+    The second argument of Encore's `stimulus_controller()` function helps us with this!
+    All we need to do is pass an object where each key name matches one of the defined `values` in the controller.
+    The key name is normalized automatically by the function, e.g. `item-id` is transformed to `itemId`.
+  features:
+    multiple_choice:
+      choices:
+        a: |
+          ```twig
+          {{ stimulus_controller('search-preview', {
+              itemId: object.id
+          }) }}
+          ```
+        b: |
+          ```twig
+          {{ controller_stimulus('search-preview', {
+              itemId: object.id
+          }) }}
+          ```
+        c: |
+          ```twig
+          {{ stimulus_controller_value('search-preview', {
+              itemId: object.id
+          }) }}
+          ```
+      correct: a
+stimulus_use:
+  question: |
+    Suppose you have the following Stimulus controller, which enables the "click outside" functionality.
+    What is it missing?
+
+    ```js
+    import { Controller } from 'stimulus';
+    import { useClickOutside  } from 'stimulus-use';
+
+    export default class extends Controller {
+        static values = {
+            url: String,
+        }
+
+        clickOutside(event) {
+            // some interesting code here...
+        }
+    }
+    ```
+  explanation: |
+    In order to tell Stimulus you want to enable the `useClickOutside` feature, besides importing the module you need to
+    initialize it in the `connect()` method, e.g.
+
+    ```js
+    connect() {
+        useClickOutside(this);
+    }
+    ```
+  features:
+    multiple_choice:
+      choices:
+        a: |
+          The `clickOutside()` method should be prefixed with `async`
+        b: |
+          The `useClickOutside` feature must be initialized in the `connect()` method
+        c: |
+          The controller is missing a target that defines *which* element is being clicked outside of.
+        d: |
+          Nothing! It's perfect! Pure "click outside" poetry!
+      correct: b
+multi_controller_dispatch:
+  question: |
+    How can I pass some data - e.g. an `id` of an item - from one Stimulus controller to another?
+  explanation: |
+    The `stimulus-use` library comes with a `useDispatch` behavior which helps with dispatching.
+    Dispatching an event is as easy as `this.dispatch('event:name')`. If you specify a second argument, that data
+    will be passed to any listeners on the `event.detail` property.
+    And while it is true that each controller should be "independent" of others. You can also get access to
+    one controller instance from inside another... but I prefer to dispatch events whenever possible!
+  features:
+    multiple_choice:
+      choices:
+        a: |
+          You cannot communicate between controllers, but this is by design. One
+          controller should not have *any* awareness of any other controller.
+        b: |
+          By dispatching an event as `this.dispatch('event:name', null, { id: item.id });`
+        c: |
+          By dispatching an event as `this.dispatch('event:name', { id: item.id });`
+        d: |
+          By defining a global variable in `connect()` - e.g. `window.id = 5` - and referencing that in the
+          other controller.
+      correct: c
+react_props:
+  question: |
+    We just built a cool React component! Let's render it with Stimulus! Oh, but there's a catch: we need
+    to be able to pass the current user's `name` directly from our server into React as a prop. What should
+    the Stimulus controller look like to allow this?
+    controller 
+  explanation: |
+    The Values API is *perfect* for receiving data from a template and then pass it to the controller...
+    which we can easily pass along to a React component as a prop. Yay!
+    through a React component as a property field.
+  features:
+    multiple_choice:
+      choices:
+        a: |
+          ```js
+          export default class extends Controller {
+              static targets = [
+                  'name'
+              ]
+
+              connect() {
+                  ReactDOM.render(
+                      <Product name={this.nameTarget} />,
+                      this.element
+                  )
+              }
+          }
+          ```
+        b: |
+          ```js
+          export default class extends Controller {
+              connect(productName) {
+                  ReactDOM.render(
+                      <Product name={productName} />,
+                      this.element
+                  )
+              }
+          }
+          ```
+        c: |
+          ```js
+          export default class extends Controller {
+              static values = {
+                  name: String
+              }
+
+              connect() {
+                  ReactDOM.render(
+                      <Product name={this.nameValue} />,
+                      this.element
+                  )
+              }
+          }
+          ```
+      correct: c
+async_imports:
+  question: |
+    We noticed that `react-dom` is being included in the JavaScript for every page... even though
+    we only use it to render one component on a single page. What's the correct way to import
+    that module dynamically?
+    
+    Oh... and to be extra cool... we want to use `await`.
+  explanation: |
+    Webpack allows you to do dynamic imports by following the next syntax:
+
+    ```js
+    const { default: ReactDOM } = await import('react-dom');
+    ```
+
+    The `default` part is weird, but required when importing the "default" module from a file.
+  features:
+    multiple_choice:
+      choices:
+        a: |
+          ```js
+          export default class extends Controller {
+              connect() {
+                  import('react-dom').then((ReactDOM) => {
+                      ReactDOM.render(
+                          <FeatureProduct product={this.productValue} />,
+                          this.element
+                      )
+                  });
+              }
+          }
+          ```
+        b: |
+          ```js
+          export default class extends Controller {
+              connect() {
+                  const { default: ReactDOM } = await import('react-dom').
+                  ReactDOM.render(
+                      <FeatureProduct product={this.productValue} />,
+                      this.element
+                  );
+              }
+          }
+          ```
+        c: |
+          ```js
+          export default class extends Controller {
+              onInput() {
+                  const { default: ReactDOM } = await import('react-dom').
+                  ReactDOM.render(
+                      <FeatureProduct product={this.productValue} />,
+                      this.element
+                  );
+              }
+          }
+          ```
+      correct: b
