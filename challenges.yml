@@ -306,7 +306,7 @@ stimulus_use:
         b: |
           The `useClickOutside` feature must be initialized in the `connect()` method
         c: |
-          The controller is missing a target.
+          The controller is missing a target that defines *which* element is being clicked outside of.
         d: |
           Nothing.
       correct: b
