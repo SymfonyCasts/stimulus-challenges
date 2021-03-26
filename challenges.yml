@@ -403,7 +403,7 @@ async_imports:
     }
     ```
 
-    And, the `.default` part is required when importing the "default" module from a file.
+    The `.default` part is weird, but required when importing the "default" module from a file.
   features:
     multiple_choice:
       choices:
