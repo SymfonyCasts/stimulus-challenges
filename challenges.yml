@@ -246,7 +246,7 @@ search_preview:
   question: |
     How can you pass data to a Stimulus controller from a Twig template using the Values API?
   explanation: |
-    The second argument of Encore's built-in function, the `stimulus_controller` function, helps us on that,
+    The second argument of Encore's `stimulus_controller()` function helps us with this!
     you only have to pass an object where the key name matches to one of the defined `values` in a controller.
   features:
     multiple_choice:
