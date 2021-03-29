@@ -430,7 +430,7 @@ async_imports:
           ```js
           export default class extends Controller {
               connect() {
-                  const { default: ReactDOM } = await import('react-dom').
+                  const { default: ReactDOM } = await import('react-dom');
                   ReactDOM.render(
                       <FeatureProduct product={this.productValue} />,
                       this.element
@@ -442,7 +442,7 @@ async_imports:
           ```js
           export default class extends Controller {
               onInput() {
-                  const { default: ReactDOM } = await import('react-dom').
+                  const { default: ReactDOM } = await import('react-dom');
                   ReactDOM.render(
                       <FeatureProduct product={this.productValue} />,
                       this.element
