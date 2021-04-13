@@ -451,3 +451,26 @@ async_imports:
           }
           ```
       correct: b
+autocomplete_controller:
+  question: |
+    Select the option that better explains what does this line do:
+    ```js
+    import { Autocomplete } from '@symfony/stimulus-bridge/lazy-controller-loader?lazy=true&export=Autocomplete!stimulus-autocomplete';
+    ```
+
+  explanation: |
+    This is a Webpack's special syntax for loading `JavaScript` modules but passing in options. The string after the `!`
+    character represents the name of the module that you really want to load, and everything before it are options in the form
+    of query parameters, just like in an URL.
+  features:
+    multiple_choice:
+      choices:
+        a: |
+          It loads the `stimulus-autocomplete` module lazily.
+        b: |
+          It uses the Symfony loader to load the `stimulus-autocomplete` module and passing it the `lazy` and `export` options.
+        c: |
+          It uses the Symfony loader to load the `stimulus-autocomplete` module lazily.
+        d: |
+          It would cause a compilation error.
+      correct: b
