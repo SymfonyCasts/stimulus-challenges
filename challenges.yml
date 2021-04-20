@@ -474,3 +474,41 @@ autocomplete_controller:
         d: |
           It would cause a compilation error.
       correct: b
+autocomplete_transitions:
+  question: |
+    How can you add a second Stimulus controller to the same HTML element?
+  explanation: |
+  features:
+    multiple_choice:
+      choices:
+        a: |
+          ```twig
+          <div
+              {{ stimulus_controller({
+                  'first-controller'
+              }, {
+                  'second-controller'
+              }) }}>
+          </div>
+          ```
+        b: |
+          ```twig
+          <div
+              {{ stimulus_controller({
+                  'first-controller': {},
+                  'second-controller': {}
+              }) }}>
+          </div>
+          ```
+        c: |
+          ```twig
+          <div
+              {{ stimulus_controller(
+                  'first-controller',
+                  'second-controller'
+              ) }}>
+          </div>
+          ```
+        d: |
+          You can only attach one controller per HTML element.
+      correct: b
