@@ -453,10 +453,9 @@ async_imports:
       correct: b
 autocomplete_controller:
   question: |
-    Select the option that best explains what this line does:
-    ```js
-    import { Autocomplete } from '@symfony/stimulus-bridge/lazy-controller-loader?lazy=true&export=Autocomplete!stimulus-autocomplete';
-    ```
+    The JavaScript module `smooth-scroll` is normally imported like this:
+    `import SmoothScroll from 'smooth-scroll';`
+    How would it look to import it lazily?
 
   explanation: |
     This is a Webpack's special syntax for importing a JavaScript module but *also* passing it through a
@@ -470,18 +469,24 @@ autocomplete_controller:
     multiple_choice:
       choices:
         a: |
-          It loads the `stimulus-autocomplete` module lazily.
+          `lazy import SmoothScroll from 'smooth-scroll';`
         b: |
-          It uses the Symfony loader to load the `stimulus-autocomplete` module and passing it the `lazy` and `export` options.
+          `import SmoothScroll from @symfony/stimulus-bridge/lazy-controller-loader?lazy=true!smooth-scroll`
         c: |
-          It uses the Symfony loader to load the `stimulus-autocomplete` module lazily.
-        d: |
-          It would cause a compilation error.
+          `import SmoothScroll from smooth-scroll!symfony/stimulus-bridge/lazy-controller-loader?lazy=true`
       correct: b
 autocomplete_transitions:
   question: |
     How can you add a second Stimulus controller to the same HTML element?
   explanation: |
+    The `stimulus_controller` function allows you to define multiple controllers for the same HTML element where each controller's
+    name is a key of the object. This is how the final HTML would look like:
+
+    ```html
+    <div
+        data-controller="fist-controller second-controller"
+    </div>
+    ```
   features:
     multiple_choice:
       choices:
