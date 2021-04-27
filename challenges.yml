@@ -453,7 +453,7 @@ async_imports:
       correct: b
 autocomplete_controller:
   question: |
-    Select the option that better explains what does this line do:
+    Select the option that best explains what this line does:
     ```js
     import { Autocomplete } from '@symfony/stimulus-bridge/lazy-controller-loader?lazy=true&export=Autocomplete!stimulus-autocomplete';
     ```
