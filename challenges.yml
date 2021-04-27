@@ -459,7 +459,11 @@ autocomplete_controller:
     ```
 
   explanation: |
-    This is a Webpack's special syntax for loading `JavaScript` modules but passing in options. The string after the `!`
+    This is a Webpack's special syntax for importing a JavaScript module but *also* passing it through a
+    Webpack "loader", which is a file that can "transform" the contents of the module. The first part - 
+    `@symfony/stimulus-bridge/lazy-controller-loader` is the path to the "loader". The query parameters
+    after - e.g. `?lazy=true&export=Autocomplete` - are options that are passed to the loader. Finally,
+    the part after the `!` is the file (module) that Webpack will actually load.
     character represents the name of the module that you really want to load, and everything before it are options in the form
     of query parameters, just like in an URL.
   features:
