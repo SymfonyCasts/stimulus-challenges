@@ -463,8 +463,6 @@ autocomplete_controller:
     `@symfony/stimulus-bridge/lazy-controller-loader` is the path to the "loader". The query parameters
     after - e.g. `?lazy=true&export=Autocomplete` - are options that are passed to the loader. Finally,
     the part after the `!` is the file (module) that Webpack will actually load.
-    character represents the name of the module that you really want to load, and everything before it are options in the form
-    of query parameters, just like in an URL.
   features:
     multiple_choice:
       choices:
